@@ -663,14 +663,15 @@ def render_gantt(data_subset, color_mode="Status"):
         }
     )
 
+    # Исправленный Tooltip с контрастным стилем и верным порядком дат (Начало — Конец)
     fig.update_traces(
-        hovertemplate="<b>%{y}</b><br>" +
+        hovertemplate="<b style='font-size:13px;'>%{y}</b><br><br>" +
                       "<b>Оперменеджер:</b> %{customdata[0]}<br>" +
                       "<b>Задача:</b> %{customdata[2]}<br>" +
                       "<b>Ответственный:</b> %{customdata[3]}<br>" +
                       "<b>Тип:</b> %{customdata[4]} | <b>Статус:</b> %{customdata[5]}<br>" +
                       "<b>Результат:</b> %{customdata[6]}<br>" +
-                      "<b>Сроки:</b> %{x|%d.%m.%Y} — %{base|%d.%m.%Y}<extra></extra>"
+                      "<b>Период:</b> %{base|%d.%m.%Y} — %{x|%d.%m.%Y}<extra></extra>"
     )
 
     fig.update_yaxes(autorange="reversed", title=None)
@@ -694,7 +695,7 @@ def render_gantt(data_subset, color_mode="Status"):
             tickformat="%b %Y",
             dtick="M1",
             showgrid=True,
-            gridcolor="#E5E7EB",
+            gridcolor="rgba(255, 255, 255, 0.12)",
             title="Шкала времени (Месяцы / Годы)"
         ),
         margin=dict(l=15, r=15, t=30, b=15),
@@ -706,7 +707,12 @@ def render_gantt(data_subset, color_mode="Status"):
             x=1,
             title=None
         ),
-        hoverlabel=dict(bgcolor="white", font_size=12)
+        hoverlabel=dict(
+            bgcolor="#1E293B",     # Контрастный темно-серый фон
+            font_color="#F8FAFC",  # Гарантированно белый/светлый шрифт
+            font_size=12,
+            bordercolor="#475569"  # Четкая рамка окна
+        )
     )
     st.plotly_chart(fig, use_container_width=True)
 
