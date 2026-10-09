@@ -1,0 +1,5 @@
+lab-gantt-dashboard/
+├── app.py
+├── requirements.txt
+└── .streamlit/
+    └── config.toml   (опционально, для темы)
