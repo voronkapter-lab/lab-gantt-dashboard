@@ -1,5 +1,3 @@
-lab-gantt-dashboard/
-├── app.py
-├── requirements.txt
-└── .streamlit/
-    └── config.toml   (опционально, для темы)
+streamlit>=1.35.0
+plotly>=5.22.0
+pandas>=2.2.0
